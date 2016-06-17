@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CRUDTestModelStoreContainer" CdmEntityContainer="CRUDTestEntities">
+    <EntitySetMapping Name="DepartmentInformations">
+      <EntityTypeMapping TypeName="CRUDTestModel.DepartmentInformation">
+        <MappingFragment StoreEntitySet="DepartmentInformation">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CRUDTestModel.DepartmentInformation">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CRUDTestModel.Store.departmentAdd">
+            <ScalarProperty Name="DepartmentName" ParameterName="DepartmentName" />
+            <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CRUDTestModel.Store.departmentUpdate">
+            <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" Version="Current" />
+            <ScalarProperty Name="DepartmentName" ParameterName="DepartmentName" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CRUDTestModel.Store.departmentDelete">
+            <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeInformations">
+      <EntityTypeMapping TypeName="CRUDTestModel.EmployeeInformation">
+        <MappingFragment StoreEntitySet="EmployeeInformation">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="CRUDTestModel.EmployeeInformation">
+        <ModificationFunctionMapping>
+          <InsertFunction FunctionName="CRUDTestModel.Store.employeeAdd">
+            <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" />
+            <ScalarProperty Name="Address" ParameterName="Address" />
+            <ScalarProperty Name="Name" ParameterName="Name" />
+          </InsertFunction>
+          <UpdateFunction FunctionName="CRUDTestModel.Store.employeeUpdate">
+            <ScalarProperty Name="DepartmentID" ParameterName="DepartmentID" Version="Current" />
+            <ScalarProperty Name="Address" ParameterName="Address" Version="Current" />
+            <ScalarProperty Name="Name" ParameterName="Name" Version="Current" />
+            <ScalarProperty Name="Sno" ParameterName="Sno" Version="Current" />
+          </UpdateFunction>
+          <DeleteFunction FunctionName="CRUDTestModel.Store.employeeDelete">
+            <ScalarProperty Name="Sno" ParameterName="Sno" />
+          </DeleteFunction>
+        </ModificationFunctionMapping>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CRUDTestModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="departmentAdd" FunctionName="CRUDTestModel.Store.departmentAdd" />
+    <FunctionImportMapping FunctionImportName="departmentDelete" FunctionName="CRUDTestModel.Store.departmentDelete" />
+    <FunctionImportMapping FunctionImportName="departmentSelect" FunctionName="CRUDTestModel.Store.departmentSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.departmentSelect_Result">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="departmentUpdate" FunctionName="CRUDTestModel.Store.departmentUpdate" />
+    <FunctionImportMapping FunctionImportName="employeeAdd" FunctionName="CRUDTestModel.Store.employeeAdd" />
+    <FunctionImportMapping FunctionImportName="employeeDelete" FunctionName="CRUDTestModel.Store.employeeDelete" />
+    <FunctionImportMapping FunctionImportName="employeeSelect" FunctionName="CRUDTestModel.Store.employeeSelect">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.employeeSelect_Result">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="employeeUpdate" FunctionName="CRUDTestModel.Store.employeeUpdate" />
+    <FunctionImportMapping FunctionImportName="selectDepartmentByID" FunctionName="CRUDTestModel.Store.selectDepartmentByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.selectDepartmentByID_Result">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectEmployeeByID" FunctionName="CRUDTestModel.Store.selectEmployeeByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.selectEmployeeByID_Result">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CRUDTestModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CRUDTestModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CRUDTestModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CRUDTestModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CRUDTestModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CRUDTestModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CRUDTestModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CRUDTestModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
